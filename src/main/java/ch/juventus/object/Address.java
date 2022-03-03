@@ -1,5 +1,7 @@
 package ch.juventus.object;
 
+import java.util.Objects;
+
 public class Address {
 
     private String street;
@@ -54,5 +56,18 @@ public class Address {
                 ", zip=" + zip +
                 ", city='" + city + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return number == address.number && zip == address.zip && Objects.equals(street, address.street) && Objects.equals(city, address.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(street, number, zip, city);
     }
 }
