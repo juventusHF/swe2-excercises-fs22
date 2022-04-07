@@ -18,6 +18,11 @@ public class Person {
         this.hasPets = hasPets;
     }
 
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }
