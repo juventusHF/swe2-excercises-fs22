@@ -7,7 +7,7 @@ import java.io.Writer;
 public class MyWriter {
 
     public void write() throws IOException {
-        Writer writer = new FileWriter("output.txt");
+        Writer writer = new FileWriter("src/main/resources/output.txt");
         StringBuffer outputText = new StringBuffer();
         outputText.append("Hello World!");
         outputText.append("\n");
