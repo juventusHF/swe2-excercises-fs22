@@ -67,15 +67,16 @@ public class NIOExercise {
     }
 
     private static void deleteDirRecursive(Path dir) throws IOException {
-        DirectoryStream<Path> content = Files.newDirectoryStream(dir);
-        for (Path path : content) {
-            if (Files.isDirectory(path)) {
-                deleteDirRecursive(path);
-            } else {
-                Files.delete(path);
+        try (DirectoryStream<Path> content = Files.newDirectoryStream(dir)) {
+            for (Path path : content) {
+                if (Files.isDirectory(path)) {
+                    deleteDirRecursive(path);
+                } else {
+                    Files.delete(path);
+                }
             }
+            Files.delete(dir);
         }
-        Files.delete(dir);
     }
 
 }
