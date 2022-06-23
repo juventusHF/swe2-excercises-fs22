@@ -4,15 +4,17 @@ import ch.juventus.object.Person;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class LambdaExamples {
 
     public static void main(String[] args) {
-        exercise1();
-        exercise2();
-        exercise3();
-        exercise4();
+//        exercise1();
+//        exercise2();
+//        exercise3();
+//        exercise4();
+        optionals();
     }
 
     private static void exercise1() {
@@ -80,6 +82,22 @@ public class LambdaExamples {
                 .allMatch(age -> age > 18);
 
         System.out.println(allMatch);
+    }
+
+    private static void optionals() {
+        List<String> input = List.of("a", "b", "c", "d");
+
+        Optional<String> foundB = input.stream()
+                .filter("b"::equals)
+                .findAny();
+
+        Optional<String> foundZ = input.stream()
+                .filter("z"::equals)
+                .findAny();
+
+        System.out.println(foundB.orElse("Could not find \"b\""));
+        System.out.println(foundZ.orElse("Could not find \"z\""));
+
     }
 
 }
